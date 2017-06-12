@@ -8,26 +8,31 @@ import 'rxjs/Rx';
 @Component({
     selector: 'ck-first-page',
     template: `
-        <md-card>
-            <h1>Sign in</h1>
-            <form novalidate>
+        <div class="full-page" fxLayout="row" fxLayoutAlign="center center">
+            <md-card fxFlex="600px" fxFlex.xs="500">
+                <h1 fxShow fxHide.sm="true">Sign in</h1>
+                <form novalidate fxLayout="column" fxLayoutGap="50px">
 
-                <md-input-container>
-                    <input mdInput placeholder="Email">
-                    <md-hint>email used during signing up</md-hint>
-                </md-input-container>
+                    <md-input-container>
+                        <input mdInput placeholder="Email">
+                        <md-hint>email used during signing up</md-hint>
+                    </md-input-container>
 
-                <md-input-container>
-                    <input mdInput placeholder="Password">
-                </md-input-container>
+                    <md-input-container>
+                        <input mdInput placeholder="Password">
+                    </md-input-container>
 
-                <button md-raised-button color="accent">Login</button>
-            </form>
-        </md-card>
+                    <button md-raised-button color="accent" fxFlexAlign="end">Login</button>
+                </form>
+            </md-card>
+        </div>
     `,
     styles: [`
-        md-card {
-            width: 300px;
+        .full-page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #ff0000;
         }
     `]
 })
