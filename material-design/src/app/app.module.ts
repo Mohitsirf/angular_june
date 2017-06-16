@@ -8,21 +8,33 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MaterialModule} from "./material.module";
 import {DeployPageComponent} from "./containers/deploy-page";
+import {LoginPageComponent} from "./containers/login-page";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpModule} from "@angular/http";
+import {RouterModule} from "@angular/router";
+import {AuthGuard} from "./guards/auth";
+import {AnonymousGuard} from "./guards/anonymous";
+import {routes} from "./routes";
 
 @NgModule({
     declarations: [
         AppComponent,
         LayoutComponent,
         HeaderComponent,
-        DeployPageComponent
+        DeployPageComponent,
+        LoginPageComponent
     ],
     imports: [
         BrowserAnimationsModule,
         BrowserModule,
         FlexLayoutModule,
-        MaterialModule
+        MaterialModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpModule,
+        RouterModule.forRoot(routes)
     ],
-    providers: [],
+    providers: [AuthGuard, AnonymousGuard],
     bootstrap: [AppComponent]
 })
 export class AppModule {

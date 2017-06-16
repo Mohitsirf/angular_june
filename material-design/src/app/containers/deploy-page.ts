@@ -1,9 +1,11 @@
 import {Component} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-deploy-page',
     template: `
         <app-layout>
+            <button md-raised-button (click)="logout()">logout</button>
             <div fxLayout="column">
                 <md-tab-group>
                     <md-tab label="New Deployment">
@@ -23,5 +25,15 @@ import {Component} from '@angular/core';
     styles: []
 })
 export class DeployPageComponent {
+
+
+    constructor(private router: Router) {
+    }
+
+    logout() {
+        localStorage.removeItem('my_login_token');
+
+        this.router.navigate(['login']);
+    }
 
 }
